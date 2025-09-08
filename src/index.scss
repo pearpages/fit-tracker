@@ -1,3 +1,5 @@
+@use "sass:map";
+
 // Sass Variables
 $colors: (
   primary: #007bff,
@@ -81,31 +83,31 @@ $transitions: (
 
 // Sass Functions
 @function color($name) {
-  @return map-get($colors, $name);
+  @return map.get($colors, $name);
 }
 
 @function font-size($size) {
-  @return map-get($font-sizes, $size);
+  @return map.get($font-sizes, $size);
 }
 
 @function font-weight($weight) {
-  @return map-get($font-weights, $weight);
+  @return map.get($font-weights, $weight);
 }
 
 @function spacing($size) {
-  @return map-get($spacing, $size);
+  @return map.get($spacing, $size);
 }
 
 @function breakpoint($bp) {
-  @return map-get($breakpoints, $bp);
+  @return map.get($breakpoints, $bp);
 }
 
 @function radius($size) {
-  @return map-get($border-radius, $size);
+  @return map.get($border-radius, $size);
 }
 
 @function transition($speed) {
-  @return map-get($transitions, $speed);
+  @return map.get($transitions, $speed);
 }
 
 // Sass Mixins
@@ -196,7 +198,6 @@ body {
   color: color(text-primary);
   background-color: color(white);
   min-height: 100vh;
-  padding: spacing(4); // Mobile padding
 }
 
 // Typography
