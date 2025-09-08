@@ -1,0 +1,13 @@
+# Prettier
+node_modules/
+dist/
+
+# Ignore build output
+build/
+
+# Ignore lock files
+package-lock.json
+yarn.lock
+
+# Ignore Vite cache
+.vite
