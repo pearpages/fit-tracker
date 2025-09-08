@@ -314,10 +314,7 @@ nav {
 
 // Responsive Breakpoints
 @include respond-to(md) {
-  body {
-    padding: spacing(6);
-  }
-  
+
   .container {
     max-width: breakpoint(md);
     padding: 0 spacing(6);
@@ -360,10 +357,6 @@ nav {
 @include respond-to(lg) {
   html {
     font-size: 18px; // Larger base font for desktop
-  }
-  
-  body {
-    padding: spacing(8);
   }
   
   .container {
