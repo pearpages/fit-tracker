@@ -16,7 +16,13 @@ interface ContributionHeatmapProps {
 
 const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({
   data = [],
-  startDate = new Date(new Date().setFullYear(new Date().getFullYear() - 1, new Date().getMonth(), new Date().getDate() + 1)),
+  startDate = new Date(
+    new Date().setFullYear(
+      new Date().getFullYear() - 1,
+      new Date().getMonth(),
+      new Date().getDate() + 1,
+    ),
+  ),
   endDate = new Date(),
   className = '',
 }) => {
@@ -192,12 +198,15 @@ const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({
       <div className="contribution-heatmap__header">
         <h3 className="contribution-heatmap__title">Activity Overview</h3>
         <p className="contribution-heatmap__subtitle">
-          {contributionData.filter(d => {
-            const date = new Date(d.date);
-            const actualStart = new Date(startDate);
-            const actualEnd = new Date(endDate);
-            return date >= actualStart && date <= actualEnd;
-          }).reduce((sum, d) => sum + d.count, 0)} contributions in the last year
+          {contributionData
+            .filter((d) => {
+              const date = new Date(d.date);
+              const actualStart = new Date(startDate);
+              const actualEnd = new Date(endDate);
+              return date >= actualStart && date <= actualEnd;
+            })
+            .reduce((sum, d) => sum + d.count, 0)}{' '}
+          contributions in the last year
         </p>
       </div>
 
