@@ -7,9 +7,9 @@ npx create-vite@latest . --template react-ts
 - prettier
 - mobile first
 - sass (BEM)
+- absolute imports
 
 `CNAME`: `fit.pages.ninja`
-
 
 ---
 

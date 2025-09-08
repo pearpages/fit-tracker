@@ -1,0 +1,479 @@
+// Sass Variables
+$colors: (
+  primary: #007bff,
+  primary-hover: #0056b3,
+  primary-dark: #0d6efd,
+  primary-dark-hover: #0b5ed7,
+  secondary: #6c757d,
+  success: #28a745,
+  warning: #ffc107,
+  danger: #dc3545,
+  light: #f8f9fa,
+  dark: #343a40,
+  white: #ffffff,
+  black: #000000,
+  text-primary: #333333,
+  text-secondary: #666666,
+  text-muted: #999999,
+  text-light: #e0e0e0,
+  border: #e9ecef,
+  border-dark: #333333,
+  border-input: #cccccc,
+  bg-dark: #121212,
+  bg-card-dark: #1e1e1e,
+  shadow: rgba(0, 0, 0, 0.1),
+  focus-shadow: rgba(0, 123, 255, 0.25)
+);
+
+$font-sizes: (
+  xs: 0.75rem,    // 12px
+  sm: 0.875rem,   // 14px
+  base: 1rem,     // 16px
+  lg: 1.125rem,   // 18px
+  xl: 1.25rem,    // 20px
+  2xl: 1.5rem,    // 24px
+  3xl: 1.75rem,   // 28px
+  4xl: 2rem,      // 32px
+  5xl: 2.5rem     // 40px
+);
+
+$font-weights: (
+  normal: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700
+);
+
+$spacing: (
+  0: 0,
+  1: 0.25rem,     // 4px
+  2: 0.5rem,      // 8px
+  3: 0.75rem,     // 12px
+  4: 1rem,        // 16px
+  5: 1.25rem,     // 20px
+  6: 1.5rem,      // 24px
+  8: 2rem,        // 32px
+  10: 2.5rem,     // 40px
+  12: 3rem        // 48px
+);
+
+$breakpoints: (
+  sm: 30rem,      // 480px
+  md: 48rem,      // 768px
+  lg: 64rem,      // 1024px
+  xl: 75rem,      // 1200px
+  2xl: 90rem      // 1440px
+);
+
+$border-radius: (
+  sm: 4px,
+  base: 6px,
+  md: 8px,
+  lg: 12px,
+  full: 50%
+);
+
+$transitions: (
+  fast: 0.15s ease,
+  base: 0.2s ease,
+  slow: 0.3s ease
+);
+
+// Sass Functions
+@function color($name) {
+  @return map-get($colors, $name);
+}
+
+@function font-size($size) {
+  @return map-get($font-sizes, $size);
+}
+
+@function font-weight($weight) {
+  @return map-get($font-weights, $weight);
+}
+
+@function spacing($size) {
+  @return map-get($spacing, $size);
+}
+
+@function breakpoint($bp) {
+  @return map-get($breakpoints, $bp);
+}
+
+@function radius($size) {
+  @return map-get($border-radius, $size);
+}
+
+@function transition($speed) {
+  @return map-get($transitions, $speed);
+}
+
+// Sass Mixins
+@mixin respond-to($breakpoint) {
+  @media (min-width: breakpoint($breakpoint)) {
+    @content;
+  }
+}
+
+@mixin button-base {
+  padding: spacing(3) spacing(4);
+  font-size: font-size(sm);
+  border: none;
+  border-radius: radius(base);
+  cursor: pointer;
+  transition: background-color transition(base);
+  font-weight: font-weight(medium);
+  
+  &:focus {
+    outline: 2px solid color(primary);
+    outline-offset: 2px;
+  }
+}
+
+@mixin input-base {
+  width: 100%;
+  padding: spacing(3);
+  font-size: font-size(sm);
+  border: 1px solid color(border-input);
+  border-radius: radius(sm);
+  margin-bottom: spacing(4);
+  
+  &:focus {
+    outline: none;
+    border-color: color(primary);
+    box-shadow: 0 0 0 2px color(focus-shadow);
+  }
+}
+
+@mixin card-base {
+  background: color(light);
+  border: 1px solid color(border);
+  border-radius: radius(md);
+  padding: spacing(4);
+  margin-bottom: spacing(4);
+  box-shadow: 0 2px 4px color(shadow);
+}
+
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin heading-base {
+  line-height: 1.2;
+  margin-bottom: spacing(3);
+  font-weight: font-weight(semibold);
+}
+
+// CSS Reset and Base Styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px; // Base font size for mobile
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+               'Helvetica Neue', Arial, sans-serif;
+  font-weight: font-weight(normal);
+  color: color(text-primary);
+  background-color: color(white);
+  min-height: 100vh;
+  padding: spacing(4); // Mobile padding
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  @include heading-base;
+}
+
+h1 {
+  font-size: font-size(3xl); // 28px on mobile
+  font-weight: font-weight(bold);
+}
+
+h2 {
+  font-size: font-size(2xl); // 24px on mobile
+}
+
+h3 {
+  font-size: font-size(xl); // 20px on mobile
+}
+
+p {
+  margin-bottom: spacing(4);
+  font-size: font-size(sm); // 14px on mobile
+}
+
+// Layout Components
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 spacing(4);
+}
+
+.card {
+  @include card-base;
+}
+
+// Buttons
+button {
+  @include button-base;
+  background-color: color(primary);
+  color: color(white);
+  width: 100%; // Full width on mobile
+  margin-bottom: spacing(2);
+
+  &:hover {
+    background-color: color(primary-hover);
+  }
+}
+
+// Form Elements
+input, textarea, select {
+  @include input-base;
+}
+
+// Navigation
+nav {
+  padding: spacing(4) 0;
+  margin-bottom: spacing(4);
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: spacing(2);
+  }
+
+  a {
+    display: block;
+    padding: spacing(3) spacing(4);
+    text-decoration: none;
+    color: color(text-primary);
+    border-radius: radius(sm);
+    transition: background-color transition(base);
+
+    &:hover {
+      background-color: color(light);
+    }
+  }
+}
+
+// Utility Classes
+.text-center {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.sr-only {
+  @include sr-only;
+}
+
+// Layout Systems
+.grid {
+  display: grid;
+  gap: spacing(4);
+  grid-template-columns: 1fr; // Single column on mobile
+}
+
+.flex {
+  display: flex;
+  flex-direction: column; // Stack vertically on mobile
+  gap: spacing(4);
+}
+
+// App-specific Styles
+.read-the-docs {
+  color: color(text-secondary);
+  font-size: font-size(xs);
+  text-align: center;
+  margin-top: spacing(8);
+}
+
+// Responsive Breakpoints
+@include respond-to(md) {
+  body {
+    padding: spacing(6);
+  }
+  
+  .container {
+    max-width: breakpoint(md);
+    padding: 0 spacing(6);
+  }
+  
+  h1 {
+    font-size: font-size(4xl); // 32px on tablet
+  }
+  
+  h2 {
+    font-size: font-size(3xl); // 28px on tablet
+  }
+  
+  p {
+    font-size: font-size(base); // 16px on tablet
+  }
+  
+  button {
+    width: auto; // Auto width on tablet
+    display: inline-block;
+    margin-right: spacing(2);
+  }
+  
+  nav {
+    ul {
+      flex-direction: row;
+      gap: spacing(4);
+    }
+  }
+  
+  .grid {
+    grid-template-columns: repeat(2, 1fr); // Two columns on tablet
+  }
+  
+  .flex {
+    flex-direction: row; // Horizontal layout on tablet
+  }
+}
+
+@include respond-to(lg) {
+  html {
+    font-size: 18px; // Larger base font for desktop
+  }
+  
+  body {
+    padding: spacing(8);
+  }
+  
+  .container {
+    max-width: breakpoint(lg);
+    padding: 0 spacing(8);
+  }
+  
+  h1 {
+    font-size: font-size(5xl); // 45px on desktop
+  }
+  
+  h2 {
+    font-size: font-size(4xl); // 36px on desktop
+  }
+  
+  .card {
+    padding: spacing(6);
+  }
+  
+  .grid {
+    grid-template-columns: repeat(3, 1fr); // Three columns on desktop
+    gap: spacing(6);
+  }
+}
+
+@include respond-to(xl) {
+  .container {
+    max-width: breakpoint(xl);
+  }
+  
+  .grid {
+    grid-template-columns: repeat(4, 1fr); // Four columns on large desktop
+    gap: spacing(8);
+  }
+}
+
+// High DPI displays
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  input, textarea, select {
+    border: 0.5px solid color(border-input);
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: color(bg-dark);
+    color: color(text-light);
+  }
+  
+  .card {
+    background: color(bg-card-dark);
+    border-color: color(border-dark);
+    color: color(text-light);
+  }
+  
+  button {
+    background-color: color(primary-dark);
+
+    &:hover {
+      background-color: color(primary-dark-hover);
+    }
+  }
+  
+  input, textarea, select {
+    background-color: color(bg-card-dark);
+    border-color: color(border-dark);
+    color: color(text-light);
+  }
+  
+  nav {
+    a {
+      color: color(text-light);
+
+      &:hover {
+        background-color: color(bg-card-dark);
+      }
+    }
+  }
+  
+  .read-the-docs {
+    color: color(text-muted);
+  }
+}
+
+// Reduced motion preferences
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// Print styles
+@media print {
+  * {
+    background: transparent !important;
+    color: color(black) !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.3;
+  }
+  
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+}
