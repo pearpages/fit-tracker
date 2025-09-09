@@ -1,50 +1,67 @@
-import type { ContributionData, Week } from "./models";
+import { createDateString, type ContributionData, type Week } from './models';
 
-// Group data by weeks (Sunday to Saturday)
-const groupByWeeks = (contributions: ContributionData[]) => {
-  const weeks: Week[] = [];
+const createEmpyContribution = (date: string): ContributionData => ({
+  date,
+  count: 0,
+  level: 0,
+});
 
-  // Start from the first Sunday before or on the start date
-  const firstDate = new Date(contributions[0].date);
-  const startOfWeek = new Date(firstDate);
-  startOfWeek.setDate(firstDate.getDate() - firstDate.getDay());
-
-  // End at the last Saturday after or on the end date
-  const lastDate = new Date(contributions[contributions.length - 1].date);
-  const endOfWeek = new Date(lastDate);
-  endOfWeek.setDate(lastDate.getDate() + (6 - lastDate.getDay()));
-
-  // Create a map of contributions by date for quick lookup
+const createContributionMap = (
+  contributions: ContributionData[],
+): Map<string, ContributionData> => {
   const contributionMap = new Map<string, ContributionData>();
   contributions.forEach((contribution) => {
     contributionMap.set(contribution.date, contribution);
   });
+  return contributionMap;
+};
 
-  // Generate weeks from start to end
-  const currentDate = new Date(startOfWeek);
-  while (currentDate <= endOfWeek) {
-    const week: ContributionData[] = [];
+const getFirstSunday = (firstDate: Date): Date => {
+  const startOfWeek = new Date(firstDate);
+  startOfWeek.setDate(firstDate.getDate() - firstDate.getDay());
+  return startOfWeek;
+};
 
-    // Generate 7 days for each week
-    for (let day = 0; day < 7; day++) {
-      const dateString = currentDate.toISOString().split('T')[0];
-      const contribution = contributionMap.get(dateString);
+const getLastStaturday = (lastDate: Date): Date => {
+  const endOfWeek = new Date(lastDate);
+  endOfWeek.setDate(lastDate.getDate() + (6 - lastDate.getDay()));
+  return endOfWeek;
+};
 
-      if (contribution) {
-        week.push(contribution);
-      } else {
-        // Create empty contribution for days without data
-        week.push({
-          date: dateString,
-          count: 0,
-          level: 0,
-        });
-      }
+const createWeek = (
+  startDate: Date,
+  contributionMap: Map<string, ContributionData>,
+): Week => {
+  const week: ContributionData[] = [];
+  const currentDate = new Date(startDate);
+  for (let day = 0; day < 7; day++) {
+    const dateString = createDateString(currentDate);
+    const contribution = contributionMap.get(dateString);
 
-      currentDate.setDate(currentDate.getDate() + 1);
+    if (contribution) {
+      week.push(contribution);
+    } else {
+      week.push(createEmpyContribution(dateString));
     }
+    currentDate.setDate(currentDate.getDate() + 1);
+  }
 
-    weeks.push(week as Week);
+  return week as Week;
+};
+
+const groupByWeeks = (contributions: ContributionData[]) => {
+  const weeks: Week[] = [];
+  const contributionMap = createContributionMap(contributions);
+
+  const firstDay = getFirstSunday(new Date(contributions[0].date));
+  const lastDate = getLastStaturday(
+    new Date(contributions[contributions.length - 1].date),
+  );
+
+  const currentDate = new Date(firstDay);
+  while (currentDate <= lastDate) {
+    weeks.push(createWeek(currentDate, contributionMap));
+    currentDate.setDate(currentDate.getDate() + 7);
   }
 
   return weeks;

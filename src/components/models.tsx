@@ -30,5 +30,8 @@ const monthNames = [
 ] as const;
 const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const;
 
+const createDateString = (date: Date): string =>
+  date.toISOString().split('T')[0];
+
 export type { ContributionData, Week };
-export { monthNames, dayNames };
+export { monthNames, dayNames, createDateString };
