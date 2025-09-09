@@ -1,11 +1,6 @@
 import React from 'react';
 import './ContributionHeatmap.scss';
-
-export interface ContributionData {
-  date: string;
-  count: number;
-  level: 0 | 1 | 2 | 3 | 4;
-}
+import type { ContributionData } from './models';
 
 interface ContributionHeatmapProps {
   data?: ContributionData[];

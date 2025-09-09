@@ -1,14 +1,10 @@
-type Square = {
-  date: string;
-  count: number;
-  level: 0 | 1 | 2 | 3 | 4;
-};
+import type { ContributionData } from '../models';
 
 const isSummerMonth = (month: number) => {
   return month >= 5 && month <= 7;
 };
 
-const getLevel = (count: number): Square['level'] => {
+const getLevel = (count: number): ContributionData['level'] => {
   let level: 0 | 1 | 2 | 3 | 4 = 0;
   if (count === 0) level = 0;
   else if (count <= 2) level = 1;
@@ -19,7 +15,7 @@ const getLevel = (count: number): Square['level'] => {
   return level;
 };
 
-function createRandomSquare(date: Date): Square {
+function createRandomSquare(date: Date): ContributionData {
   // Create realistic patterns
   const dayOfWeek = date.getDay();
   const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
@@ -52,8 +48,8 @@ function createRandomSquare(date: Date): Square {
   };
 }
 
-export const generateSampleData = (): Square[] => {
-  const data: Square[] = [];
+export const generateSampleData = (): ContributionData[] => {
+  const data: ContributionData[] = [];
   const startDate = new Date(); // Today
   startDate.setFullYear(startDate.getFullYear() - 1); // One year ago
 
