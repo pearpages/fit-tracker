@@ -1,4 +1,4 @@
-import type { ContributionData } from '../models';
+import { createDateString, type ContributionData } from '../models';
 
 const isSummerMonth = (month: number) => {
   return month >= 5 && month <= 7;
@@ -42,7 +42,7 @@ function createMockContributionData(date: Date): ContributionData {
   }
 
   return {
-    date: date.toISOString().split('T')[0],
+    date: createDateString(date),
     count,
     level: getLevel(count),
   };
