@@ -4,10 +4,12 @@ import { ControlGroups } from './ControlGroups';
 import { generateSampleData } from './generateSampleData';
 import './index.scss';
 
+const sampleData = generateSampleData();
+
 function Example() {
   const [theme, setTheme] = useState('');
   const [useCustomData, setUseCustomData] = useState(false);
-  const sampleData = generateSampleData();
+
   return (
     <>
       <div className="example__controls">

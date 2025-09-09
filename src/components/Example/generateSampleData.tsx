@@ -15,7 +15,7 @@ const getLevel = (count: number): ContributionData['level'] => {
   return level;
 };
 
-function createRandomSquare(date: Date): ContributionData {
+function createMockContributionData(date: Date): ContributionData {
   // Create realistic patterns
   const dayOfWeek = date.getDay();
   const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
@@ -56,7 +56,7 @@ export const generateSampleData = (): ContributionData[] => {
   for (let i = 0; i < 365; i++) {
     const date = new Date(startDate);
     date.setDate(date.getDate() + i);
-    data.push(createRandomSquare(date));
+    data.push(createMockContributionData(date));
   }
 
   return data;
