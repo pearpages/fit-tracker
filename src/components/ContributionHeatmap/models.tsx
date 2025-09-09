@@ -1,3 +1,5 @@
+type Theme = '' | 'ocean' | 'sunset' | 'purple';
+
 interface ContributionData {
   date: string;
   count: number;
@@ -47,5 +49,5 @@ function getLastYearPeriod(): Period {
 const createDateString = (date: Date): string =>
   date.toISOString().split('T')[0];
 
-export type { ContributionData, Week, Period };
+export type { ContributionData, Week, Period, Theme };
 export { monthNames, dayNames, createDateString, getLastYearPeriod };

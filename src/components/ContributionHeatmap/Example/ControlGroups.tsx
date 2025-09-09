@@ -1,13 +1,14 @@
 import './controlGroups.scss';
+import type { Theme } from '../models';
 
 export function ControlGroups({
-  actions: { theme, setTheme, useCustomData, setUseCustomData },
+  actions: { theme, setTheme, hasRealisticData, setHasRealisticData },
 }: {
   actions: {
-    theme: string;
-    setTheme: (theme: string) => void;
-    useCustomData: boolean;
-    setUseCustomData: (use: boolean) => void;
+    theme: Theme;
+    setTheme: (theme: Theme) => void;
+    hasRealisticData: boolean;
+    setHasRealisticData: (use: boolean) => void;
   };
 }) {
   return (
@@ -45,8 +46,8 @@ export function ControlGroups({
         <label className="control-group__checkbox">
           <input
             type="checkbox"
-            checked={useCustomData}
-            onChange={(e) => setUseCustomData(e.target.checked)}
+            checked={hasRealisticData}
+            onChange={(e) => setHasRealisticData(e.target.checked)}
           />
           Use realistic sample data
         </label>

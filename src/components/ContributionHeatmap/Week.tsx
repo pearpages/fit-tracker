@@ -4,7 +4,7 @@ import { formatTooltip } from './formatTooltip';
 function Week({
   week,
   key,
-  period: { start, end },
+  period,
 }: {
   week: ContributionData[];
   key: string | number;
@@ -16,14 +16,8 @@ function Week({
         <div
           key={contribution.date}
           className={`contribution-heatmap__day contribution-heatmap__day--level-${contribution.level}`}
-          title={formatTooltip(contribution, {
-            start,
-            end,
-          })}
-          aria-label={formatTooltip(contribution, {
-            start,
-            end,
-          })}
+          title={formatTooltip(contribution, period)}
+          aria-label={formatTooltip(contribution, period)}
           role="button"
           tabIndex={0}
           data-count={contribution.count}

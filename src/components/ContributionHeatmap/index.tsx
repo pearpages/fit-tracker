@@ -1,9 +1,6 @@
 import './index.scss';
-import type { ContributionData, Period } from './models';
-import { getLastYearPeriod } from './models';
-import { groupByWeeks } from './groupByWeeks';
+import type { ContributionData, Period, Week as WeekType } from './models';
 import { getMonthsForHeader } from './getMonthsForHeader';
-import { generateMockData } from './generateMockData';
 import { MonthLabels } from './MonthLabels';
 import { DayLabels } from './DayLabels';
 import { Legend } from './Legend';
@@ -11,29 +8,17 @@ import { Header } from './Header';
 import { Week } from './Week';
 
 interface ContributionHeatmapProps {
-  data?: ContributionData[];
-  period?: Period;
+  data: { contribution: ContributionData[]; period: Period; weeks: WeekType[] };
   className?: string;
 }
 
 function ContributionHeatmap({
-  data = [],
-  period = getLastYearPeriod(),
+  data: { contribution, period, weeks },
   className = '',
 }: ContributionHeatmapProps) {
-  const contributionData =
-    data.length > 0
-      ? data
-      : generateMockData({
-          period,
-          isRealistic: false,
-        });
-
-  const weeks = groupByWeeks(contributionData);
-
   return (
     <div className={`contribution-heatmap ${className}`}>
-      <Header data={contributionData} />
+      <Header contributions={contribution.filter((d) => d.count > 0).length} />
 
       <div className="contribution-heatmap__container">
         <MonthLabels
