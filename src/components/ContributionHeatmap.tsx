@@ -1,6 +1,7 @@
 import React from 'react';
 import './ContributionHeatmap.scss';
 import type { ContributionData } from './models';
+import { monthNames, dayNames } from './models';
 
 interface ContributionHeatmapProps {
   data?: ContributionData[];
@@ -100,21 +101,6 @@ const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({
   };
 
   const weeks = groupByWeeks(contributionData);
-  const monthNames = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ];
-  const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   // Calculate months for header
   const getMonthsForHeader = () => {
