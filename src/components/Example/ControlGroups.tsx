@@ -1,3 +1,5 @@
+import './controlGroups.scss';
+
 export function ControlGroups({
   actions: { theme, setTheme, useCustomData, setUseCustomData },
 }: {
