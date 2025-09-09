@@ -3,6 +3,7 @@ import './ContributionHeatmap.scss';
 import type { ContributionData } from './models';
 import { monthNames, dayNames } from './models';
 import { groupByWeeks } from './groupByWeeks';
+import { generateMockData } from './generateMockData';
 
 interface ContributionHeatmapProps {
   data?: ContributionData[];
@@ -23,33 +24,13 @@ const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({
   endDate = new Date(),
   className = '',
 }) => {
-  // Generate mock data if no data is provided
-  const generateMockData = (): ContributionData[] => {
-    const mockData: ContributionData[] = [];
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-
-    for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
-      const count = Math.floor(Math.random() * 15);
-      let level: 0 | 1 | 2 | 3 | 4 = 0;
-
-      if (count === 0) level = 0;
-      else if (count <= 3) level = 1;
-      else if (count <= 6) level = 2;
-      else if (count <= 9) level = 3;
-      else level = 4;
-
-      mockData.push({
-        date: d.toISOString().split('T')[0],
-        count,
-        level,
-      });
-    }
-
-    return mockData;
-  };
-
-  const contributionData = data.length > 0 ? data : generateMockData();
+  const contributionData =
+    data.length > 0
+      ? data
+      : generateMockData({
+          period: { start: startDate, end: endDate },
+          isRealistic: false,
+        });
 
   const weeks = groupByWeeks(contributionData);
 
@@ -178,7 +159,7 @@ const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({
         <div className="contribution-heatmap__grid">
           {weeks.map((week, weekIndex) => (
             <div key={weekIndex} className="contribution-heatmap__week">
-              {week.map((contribution) => (
+              {week.map((contribution: ContributionData) => (
                 <div
                   key={contribution.date}
                   className={`contribution-heatmap__day contribution-heatmap__day--level-${contribution.level}`}
@@ -208,4 +189,4 @@ const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({
   );
 };
 
-export default ContributionHeatmap;
+export { ContributionHeatmap };

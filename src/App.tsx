@@ -1,4 +1,4 @@
-import { Example } from '@/components/Example';
+import { Example } from '@/components/ContributionHeatmap/Example';
 import './App.scss';
 
 const Header = () => (

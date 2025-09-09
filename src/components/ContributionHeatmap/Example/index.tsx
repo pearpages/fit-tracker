@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import ContributionHeatmap from '../ContributionHeatmap';
+import { ContributionHeatmap } from '../ContributionHeatmap';
 import { ControlGroups } from './ControlGroups';
-import { generateSampleData } from './generateSampleData';
+import { generateMockData } from '../generateMockData';
 import './index.scss';
 
-const sampleData = generateSampleData();
+const sampleData = generateMockData({ period: 'lastYear', isRealistic: true });
 
 function Example() {
   const [theme, setTheme] = useState('');

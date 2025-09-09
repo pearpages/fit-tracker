@@ -16,13 +16,13 @@ const createContributionMap = (
   return contributionMap;
 };
 
-const getFirstSunday = (firstDate: Date): Date => {
+const getFirstSunday: (firstDate: Date) => Date = (firstDate) => {
   const startOfWeek = new Date(firstDate);
   startOfWeek.setDate(firstDate.getDate() - firstDate.getDay());
   return startOfWeek;
 };
 
-const getLastStaturday = (lastDate: Date): Date => {
+const getLastSaturday: (lastDate: Date) => Date = (lastDate) => {
   const endOfWeek = new Date(lastDate);
   endOfWeek.setDate(lastDate.getDate() + (6 - lastDate.getDay()));
   return endOfWeek;
@@ -49,12 +49,14 @@ const createWeek = (
   return week as Week;
 };
 
-const groupByWeeks = (contributions: ContributionData[]) => {
+const groupByWeeks: (contributions: ContributionData[]) => Week[] = (
+  contributions,
+) => {
   const weeks: Week[] = [];
   const contributionMap = createContributionMap(contributions);
 
   const firstDay = getFirstSunday(new Date(contributions[0].date));
-  const lastDate = getLastStaturday(
+  const lastDate = getLastSaturday(
     new Date(contributions[contributions.length - 1].date),
   );
 
