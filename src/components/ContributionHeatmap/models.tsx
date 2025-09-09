@@ -32,8 +32,20 @@ const monthNames = [
 ] as const;
 const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const;
 
+function getLastYearPeriod(): Period {
+  const start = new Date(
+    new Date().setFullYear(
+      new Date().getFullYear() - 1,
+      new Date().getMonth(),
+      new Date().getDate() + 1,
+    ),
+  );
+  const end = new Date();
+  return { start, end };
+}
+
 const createDateString = (date: Date): string =>
   date.toISOString().split('T')[0];
 
 export type { ContributionData, Week, Period };
-export { monthNames, dayNames, createDateString };
+export { monthNames, dayNames, createDateString, getLastYearPeriod };

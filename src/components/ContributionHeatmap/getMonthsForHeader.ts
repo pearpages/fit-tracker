@@ -1,18 +1,17 @@
-import { monthNames, type Week } from './models';
+import { monthNames, type Period, type Week } from './models';
 
 function getMonthsForHeader({
   weeks,
-  startDate,
-  endDate,
+  period,
 }: {
   weeks: Week[];
-  startDate: Date;
-  endDate: Date;
+  period: Period;
 }): {
   name: string;
   span: number;
 }[] {
   const months: { name: string; span: number }[] = [];
+  const { start, end } = period;
   let currentMonth = -1;
   let currentSpan = 0;
 
@@ -20,8 +19,8 @@ function getMonthsForHeader({
     if (week.length > 0) {
       // Find the first day in the week that falls within our actual data range
       let monthToUse = -1;
-      const actualStartDate = new Date(startDate);
-      const actualEndDate = new Date(endDate);
+      const actualStartDate = new Date(start);
+      const actualEndDate = new Date(end);
 
       for (const day of week) {
         const dayDate = new Date(day.date);

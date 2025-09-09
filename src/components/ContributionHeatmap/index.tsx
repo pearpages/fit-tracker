@@ -1,5 +1,6 @@
 import './index.scss';
-import type { ContributionData } from './models';
+import type { ContributionData, Period } from './models';
+import { getLastYearPeriod } from './models';
 import { groupByWeeks } from './groupByWeeks';
 import { getMonthsForHeader } from './getMonthsForHeader';
 import { generateMockData } from './generateMockData';
@@ -11,28 +12,20 @@ import { Week } from './Week';
 
 interface ContributionHeatmapProps {
   data?: ContributionData[];
-  startDate?: Date;
-  endDate?: Date;
+  period?: Period;
   className?: string;
 }
 
 function ContributionHeatmap({
   data = [],
-  startDate = new Date(
-    new Date().setFullYear(
-      new Date().getFullYear() - 1,
-      new Date().getMonth(),
-      new Date().getDate() + 1,
-    ),
-  ),
-  endDate = new Date(),
+  period = getLastYearPeriod(),
   className = '',
 }: ContributionHeatmapProps) {
   const contributionData =
     data.length > 0
       ? data
       : generateMockData({
-          period: { start: startDate, end: endDate },
+          period,
           isRealistic: false,
         });
 
@@ -46,19 +39,14 @@ function ContributionHeatmap({
         <MonthLabels
           months={getMonthsForHeader({
             weeks,
-            startDate,
-            endDate,
+            period,
           })}
         />
         <DayLabels />
 
         <div className="contribution-heatmap__grid">
           {weeks.map((week, weekIndex) => (
-            <Week
-              week={week}
-              key={weekIndex}
-              period={{ start: startDate, end: endDate }}
-            />
+            <Week week={week} key={weekIndex} period={period} />
           ))}
         </div>
       </div>
