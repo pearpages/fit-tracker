@@ -14,6 +14,8 @@ type Week = [
   ContributionData,
 ];
 
+type Period = { start: Date; end: Date };
+
 const monthNames = [
   'Jan',
   'Feb',
@@ -33,5 +35,5 @@ const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const;
 const createDateString = (date: Date): string =>
   date.toISOString().split('T')[0];
 
-export type { ContributionData, Week };
+export type { ContributionData, Week, Period };
 export { monthNames, dayNames, createDateString };

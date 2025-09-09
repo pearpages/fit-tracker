@@ -1,12 +1,10 @@
-import { createDateString, type ContributionData } from './models';
+import { createDateString, type ContributionData, type Period } from './models';
 import { createRealisticMockedCount } from './createRealisticMockedCount';
 import { getLevel } from './getLevel';
 
 const getRandomCount = () => Math.floor(Math.random() * 15);
 
-type Period = { start: Date; end: Date } | 'lastYear';
-
-function getRange(period: Period) {
+function getRange(period: Period | 'lastYear') {
   if (period !== 'lastYear') {
     return period;
   }
@@ -20,7 +18,7 @@ function generateMockData({
   period,
   isRealistic,
 }: {
-  period: Period;
+  period: Period | 'lastYear';
   isRealistic: boolean;
 }): ContributionData[] {
   const data: ContributionData[] = [];

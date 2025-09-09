@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ContributionHeatmap } from '../ContributionHeatmap';
+import { ContributionHeatmap } from '..';
 import { ControlGroups } from './ControlGroups';
 import { generateMockData } from '../generateMockData';
 import './index.scss';
