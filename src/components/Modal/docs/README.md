@@ -58,25 +58,6 @@ function MyComponent() {
 }
 ```
 
-### 3. Use the ModalTrigger Component
-
-```tsx
-import { ModalTrigger } from './components/Modal';
-
-function MyComponent() {
-  return (
-    <ModalTrigger
-      modal={{
-        title: 'Quick Modal',
-        content: 'Simple modal content',
-      }}
-    >
-      Open Modal
-    </ModalTrigger>
-  );
-}
-```
-
 ## API Reference
 
 ### ModalProvider
@@ -108,24 +89,6 @@ const {
   isOpen, // (id: ModalId) => boolean
   subscribe, // (fn: (stack: ModalEntry[]) => void) => () => void
 } = useModal();
-```
-
-### ModalTrigger
-
-Component that automatically opens a modal when clicked:
-
-```tsx
-<ModalTrigger
-  modal={{
-    title: 'Modal Title',
-    content: 'Modal content',
-    size: 'lg',
-  }}
-  disabled={false}
-  className="custom-trigger"
->
-  Click me
-</ModalTrigger>
 ```
 
 ## Modal Options

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { ModalProvider } from '../ModalProvider';
 import { ModalRoot } from '../ModalRoot';
-import { ModalTrigger } from '../ModalTrigger';
 import { useModal } from '../useModal';
 
 // Sample form component for modal content
@@ -202,25 +201,6 @@ export const ModalDemoContent: React.FC = () => {
         <button onClick={handleDelete}>Delete Item (Confirm)</button>
         <button onClick={openHelpModal}>Open Help</button>
         <button onClick={openStackedModal}>Open Stacked Modals</button>
-
-        <ModalTrigger
-          modal={{
-            title: 'Quick Modal',
-            size: 'sm',
-            content: ({ close }) => (
-              <div>
-                <p>This modal was opened using ModalTrigger component!</p>
-                <div className="modal-actions modal-actions-center">
-                  <button onClick={close} className="btn-primary">
-                    Close
-                  </button>
-                </div>
-              </div>
-            ),
-          }}
-        >
-          Modal Trigger Example
-        </ModalTrigger>
       </div>
 
       <div style={{ marginTop: '2rem' }}>
