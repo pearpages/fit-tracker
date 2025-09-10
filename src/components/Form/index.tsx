@@ -44,23 +44,30 @@ function Form(): React.ReactNode {
   });
 
   const handleWaterGlassChange = (index: number) => {
-    const newWaterGlasses = [...formData.waterGlasses];
-    newWaterGlasses[index] = !newWaterGlasses[index];
-    setFormData({ ...formData, waterGlasses: newWaterGlasses });
+    setFormData(prevData => {
+      const newWaterGlasses = [...prevData.waterGlasses];
+      newWaterGlasses[index] = !newWaterGlasses[index];
+      return { ...prevData, waterGlasses: newWaterGlasses };
+    });
   };
 
   const handleVegetableServingChange = (index: number) => {
-    const newVegetableServings = [...formData.vegetableServings];
-    newVegetableServings[index] = !newVegetableServings[index];
-    setFormData({ ...formData, vegetableServings: newVegetableServings });
+    setFormData(prevData => {
+      const newVegetableServings = [...prevData.vegetableServings];
+      newVegetableServings[index] = !newVegetableServings[index];
+      return { ...prevData, vegetableServings: newVegetableServings };
+    });
   };
 
   const handleCheckboxChange = (field: keyof FormData) => {
-    setFormData({ ...formData, [field]: !formData[field as keyof FormData] });
+    setFormData(prevData => ({
+      ...prevData,
+      [field]: !prevData[field as keyof FormData]
+    }));
   };
 
   const handleWeightChange = (value: string) => {
-    setFormData({ ...formData, weight: value });
+    setFormData(prevData => ({ ...prevData, weight: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -86,7 +93,7 @@ function Form(): React.ReactNode {
     if (formData.sleptWell) score += 3.0;
     
     // Nutrition
-    if (vegetableServingsCount >= 5) score += 1.0; // Vegetables/Fruit: +1.0
+    score += Math.min(vegetableServingsCount * 0.2, 1.0); // Vegetables/Fruit: +0.2 per serving, max +1.0
     if (formData.noSweets) score += 2.0; // No sweets: +2.0 (removes penalty)
     if (formData.noAlcohol) score += 2.0; // No alcohol: +2.0 (removes penalty)
     
@@ -167,8 +174,8 @@ function Form(): React.ReactNode {
         
         <div className="fit-form__subsection">
           <div className="fit-form__subsection-header">
-            <h4 className="fit-form__subsection-title">Vegetables/Fruit servings (≥5 for +1 point)</h4>
-            <span className="fit-form__section-subtitle">{vegetableServingsCount}/5 servings (+{vegetableServingsCount >= 5 ? '1' : '0'})</span>
+            <h4 className="fit-form__subsection-title">Vegetables/Fruit servings (+0.2 per serving, max +1.0 at 5 servings)</h4>
+            <span className="fit-form__section-subtitle">{vegetableServingsCount}/5 servings (+{Math.min(vegetableServingsCount * 0.2, 1.0).toFixed(1)})</span>
           </div>
           <div className="fit-form__vegetable-servings">
             {formData.vegetableServings.map((served, index) => (

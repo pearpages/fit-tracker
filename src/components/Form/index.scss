@@ -318,14 +318,16 @@
     }
 
     &--filled {
-      background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
-      border-color: #4299e1;
-      color: white;
-      box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3);
+      background: linear-gradient(135deg, #4299e1 0%, #667eea 100%) !important;
+      border-color: #4299e1 !important;
+      color: white !important;
+      box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3) !important;
 
       &:hover {
-        background: linear-gradient(135deg, #3182ce 0%, #5a67d8 100%);
-        border-color: #3182ce;
+        background: linear-gradient(135deg, #3182ce 0%, #5a67d8 100%) !important;
+        border-color: #3182ce !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(49, 130, 206, 0.4) !important;
       }
     }
   }
@@ -398,14 +400,16 @@
     }
 
     &--filled {
-      background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
-      border-color: #48bb78;
-      color: white;
-      box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+      background: linear-gradient(135deg, #48bb78 0%, #38a169 100%) !important;
+      border-color: #48bb78 !important;
+      color: white !important;
+      box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3) !important;
 
       &:hover {
-        background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
-        border-color: #38a169;
+        background: linear-gradient(135deg, #38a169 0%, #2f855a 100%) !important;
+        border-color: #38a169 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(56, 161, 105, 0.4) !important;
       }
     }
   }
