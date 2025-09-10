@@ -1,38 +1,60 @@
-// Form component styles - Mobile first approach
+// Form component styles - Mobile first responsive approach
 .fit-form {
-  max-width: 600px;
-  margin: 0 auto;
+  // Mobile first base styles
+  
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  padding: 24px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   
-  @media (max-width: 480px) {
+  // Tablet breakpoint (768px and up)
+  @media (min-width: 768px) {
+    
     padding: 20px;
-    border-radius: 16px;
-    margin: 0 10px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  // Desktop breakpoint (1024px and up)
+  @media (min-width: 1024px) {
+    
+    padding: 24px;
+    border-radius: 20px;
   }
 
   // Header with score
   &__header {
     text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
     
-    @media (max-width: 480px) {
-      margin-bottom: 24px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      margin-bottom: 28px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      margin-bottom: 32px;
     }
   }
 
   &__title {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-weight: 700;
     color: #2d3748;
-    margin: 0 0 16px 0;
+    margin: 0 0 12px 0;
     
-    @media (max-width: 480px) {
-      font-size: 1.5rem;
-      margin-bottom: 12px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      font-size: 1.6rem;
+      margin-bottom: 14px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
     }
   }
 
@@ -41,60 +63,98 @@
     align-items: baseline;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    padding: 8px 16px;
-    border-radius: 20px;
+    padding: 6px 12px;
+    border-radius: 16px;
     font-weight: 600;
     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
     
-    @media (max-width: 480px) {
-      padding: 6px 12px;
-      border-radius: 16px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      padding: 7px 14px;
+      border-radius: 18px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      padding: 8px 16px;
+      border-radius: 20px;
     }
   }
 
   &__score-number {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-right: 2px;
     
-    @media (max-width: 480px) {
-      font-size: 1.3rem;
+    // Tablet and up
+    @media (min-width: 768px) {
+      font-size: 1.35rem;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      font-size: 1.5rem;
     }
   }
 
   &__score-total {
-    font-size: 1rem;
+    font-size: 0.85rem;
     opacity: 0.8;
     
-    @media (max-width: 480px) {
-      font-size: 0.9rem;
+    // Tablet and up
+    @media (min-width: 768px) {
+      font-size: 0.95rem;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      font-size: 1rem;
     }
   }
 
   &__score-note {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: #718096;
-    margin: 8px 0 0 0;
+    margin: 6px 0 0 0;
     font-style: italic;
     
-    @media (max-width: 480px) {
-      font-size: 0.7rem;
-      margin-top: 6px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      font-size: 0.725rem;
+      margin-top: 7px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      font-size: 0.75rem;
+      margin-top: 8px;
     }
   }
 
   // Section styling
   &__section {
-    margin-bottom: 28px;
+    margin-bottom: 20px;
     
-    @media (max-width: 480px) {
+    // Tablet and up
+    @media (min-width: 768px) {
       margin-bottom: 24px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      margin-bottom: 28px;
     }
 
     &:last-of-type {
-      margin-bottom: 32px;
+      margin-bottom: 24px;
       
-      @media (max-width: 480px) {
-        margin-bottom: 24px;
+      // Tablet and up
+      @media (min-width: 768px) {
+        margin-bottom: 28px;
+      }
+      
+      // Desktop and up
+      @media (min-width: 1024px) {
+        margin-bottom: 32px;
       }
     }
   }
@@ -103,44 +163,69 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     
-    @media (max-width: 480px) {
-      margin-bottom: 12px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      margin-bottom: 14px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      margin-bottom: 16px;
     }
   }
 
   &__section-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #2d3748;
     margin: 0;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     
-    @media (max-width: 480px) {
-      font-size: 1rem;
-      gap: 6px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      font-size: 1.05rem;
+      gap: 7px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      font-size: 1.1rem;
+      gap: 8px;
     }
   }
 
   &__section-subtitle {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #667eea;
     font-weight: 500;
     
-    @media (max-width: 480px) {
-      font-size: 0.8rem;
+    // Tablet and up
+    @media (min-width: 768px) {
+      font-size: 0.825rem;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      font-size: 0.85rem;
     }
   }
 
   // Subsection styling for grouping within sections
   &__subsection {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     
-    @media (max-width: 480px) {
-      margin-bottom: 16px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      margin-bottom: 18px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      margin-bottom: 20px;
     }
   }
 
@@ -148,51 +233,78 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     
-    @media (max-width: 480px) {
-      margin-bottom: 10px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      margin-bottom: 11px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      margin-bottom: 12px;
     }
   }
 
   &__subsection-title {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 500;
     color: #4a5568;
     margin: 0;
     
-    @media (max-width: 480px) {
-      font-size: 0.9rem;
+    // Tablet and up
+    @media (min-width: 768px) {
+      font-size: 0.925rem;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      font-size: 0.95rem;
     }
   }
 
   // Water glasses grid
   &__water-glasses {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
     
-    @media (max-width: 480px) {
-      gap: 8px;
+    // Small mobile (375px and up)
+    @media (min-width: 375px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    
+    // Tablet and up
+    @media (min-width: 768px) {
+      gap: 12px;
     }
   }
 
   &__water-glass {
     background: #f7fafc;
     border: 2px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 16px;
+    border-radius: 10px;
+    padding: 12px;
     cursor: pointer;
     transition: all 0.2s ease;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     
-    @media (max-width: 480px) {
-      padding: 12px;
-      border-radius: 10px;
-      font-size: 1.3rem;
+    // Tablet and up
+    @media (min-width: 768px) {
+      padding: 14px;
+      border-radius: 11px;
+      font-size: 1.4rem;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 1.5rem;
     }
 
     &:hover {
@@ -225,34 +337,54 @@
   // Vegetable servings grid (similar to water glasses)
   &__vegetable-servings {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
     
-    @media (max-width: 480px) {
-      gap: 8px;
+    // Small mobile (375px and up)
+    @media (min-width: 375px) {
+      grid-template-columns: repeat(4, 1fr);
     }
-
-    @media (max-width: 380px) {
-      grid-template-columns: repeat(3, 1fr);
+    
+    // Large mobile (480px and up)
+    @media (min-width: 480px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+    
+    // Tablet and up
+    @media (min-width: 768px) {
+      gap: 10px;
+    }
+    
+    // Desktop and up  
+    @media (min-width: 1024px) {
+      gap: 12px;
     }
   }
 
   &__vegetable-serving {
     background: #f7fafc;
     border: 2px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 12px;
+    border-radius: 10px;
+    padding: 10px;
     cursor: pointer;
     transition: all 0.2s ease;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     
-    @media (max-width: 480px) {
-      padding: 10px;
-      border-radius: 10px;
-      font-size: 1.2rem;
+    // Tablet and up
+    @media (min-width: 768px) {
+      padding: 11px;
+      border-radius: 11px;
+      font-size: 1.25rem;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 1.3rem;
     }
 
     &:hover {
@@ -286,26 +418,40 @@
   &__checkboxes {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     
-    @media (max-width: 480px) {
-      gap: 10px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      gap: 11px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      gap: 12px;
     }
   }
 
   &__checkbox {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
     cursor: pointer;
-    padding: 12px;
-    border-radius: 12px;
+    padding: 10px;
+    border-radius: 10px;
     transition: all 0.2s ease;
     
-    @media (max-width: 480px) {
-      gap: 10px;
-      padding: 10px;
-      border-radius: 10px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      gap: 11px;
+      padding: 11px;
+      border-radius: 11px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      gap: 12px;
+      padding: 12px;
+      border-radius: 12px;
     }
 
     &:hover {
@@ -318,38 +464,55 @@
   }
 
   &__checkbox-checkmark {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border: 2px solid #cbd5e0;
-    border-radius: 6px;
+    border-radius: 5px;
     background: white;
     flex-shrink: 0;
     position: relative;
     transition: all 0.2s ease;
     
-    @media (max-width: 480px) {
-      width: 18px;
-      height: 18px;
-      border-radius: 5px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      width: 19px;
+      height: 19px;
+      border-radius: 5.5px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
     }
 
     &::after {
       content: '';
       position: absolute;
-      top: 2px;
-      left: 6px;
-      width: 6px;
-      height: 10px;
+      top: 1px;
+      left: 5px;
+      width: 5px;
+      height: 9px;
       border: solid white;
       border-width: 0 2px 2px 0;
       transform: rotate(45deg) scale(0);
       transition: transform 0.2s ease;
       
-      @media (max-width: 480px) {
-        top: 1px;
-        left: 5px;
-        width: 5px;
-        height: 9px;
+      // Tablet and up
+      @media (min-width: 768px) {
+        top: 1.5px;
+        left: 5.5px;
+        width: 5.5px;
+        height: 9.5px;
+      }
+      
+      // Desktop and up
+      @media (min-width: 1024px) {
+        top: 2px;
+        left: 6px;
+        width: 6px;
+        height: 10px;
       }
     }
   }
@@ -365,51 +528,78 @@
 
   &__checkbox-label {
     color: #2d3748;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.4;
     margin-top: 1px;
     
-    @media (max-width: 480px) {
-      font-size: 0.9rem;
+    // Tablet and up
+    @media (min-width: 768px) {
+      font-size: 0.925rem;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      font-size: 0.95rem;
     }
   }
 
   // Point indicators
   &__points {
     font-weight: 600;
-    font-size: 0.85rem;
-    padding: 2px 6px;
+    font-size: 0.8rem;
+    padding: 1px 4px;
     border-radius: 10px;
-    margin-left: 8px;
+    margin-left: 6px;
     background: rgba(102, 126, 234, 0.1);
     color: #667eea;
     
-    @media (max-width: 480px) {
-      font-size: 0.8rem;
-      padding: 1px 4px;
-      margin-left: 6px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      font-size: 0.825rem;
+      padding: 1.5px 5px;
+      margin-left: 7px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      font-size: 0.85rem;
+      padding: 2px 6px;
+      margin-left: 8px;
     }
   }
 
   // Counter for vegetables/fruit
   &__counter {
-    margin-top: 16px;
+    margin-top: 12px;
     
-    @media (max-width: 480px) {
-      margin-top: 12px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      margin-top: 14px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      margin-top: 16px;
     }
   }
 
   &__counter-label {
     display: block;
     color: #2d3748;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 500;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     
-    @media (max-width: 480px) {
-      font-size: 0.9rem;
-      margin-bottom: 6px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      font-size: 0.925rem;
+      margin-bottom: 7px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
     }
   }
 
@@ -435,20 +625,26 @@
   &__counter-controls {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
     
-    @media (max-width: 480px) {
-      gap: 12px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      gap: 14px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      gap: 16px;
     }
   }
 
   &__counter-btn {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border: 2px solid #e2e8f0;
     background: white;
-    border-radius: 10px;
-    font-size: 1.2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
     font-weight: 600;
     color: #4a5568;
     cursor: pointer;
@@ -457,11 +653,20 @@
     align-items: center;
     justify-content: center;
     
-    @media (max-width: 480px) {
-      width: 36px;
-      height: 36px;
-      font-size: 1.1rem;
-      border-radius: 8px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      width: 38px;
+      height: 38px;
+      font-size: 1.15rem;
+      border-radius: 9px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+      border-radius: 10px;
     }
 
     &:hover {
@@ -476,14 +681,20 @@
   }
 
   &__counter-value {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: #2d3748;
     min-width: 24px;
     text-align: center;
     
-    @media (max-width: 480px) {
-      font-size: 1.2rem;
+    // Tablet and up
+    @media (min-width: 768px) {
+      font-size: 1.25rem;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      font-size: 1.3rem;
     }
   }
 
@@ -491,37 +702,57 @@
   &__weight-input {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     
-    @media (max-width: 480px) {
-      gap: 6px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      gap: 7px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      gap: 8px;
     }
   }
 
   &__weight-label {
     color: #2d3748;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 500;
     
-    @media (max-width: 480px) {
-      font-size: 0.9rem;
+    // Tablet and up
+    @media (min-width: 768px) {
+      font-size: 0.925rem;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      font-size: 0.95rem;
     }
   }
 
   &__weight-field {
-    padding: 12px 16px;
+    padding: 10px 14px;
     border: 2px solid #e2e8f0;
-    border-radius: 10px;
-    font-size: 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
     color: #2d3748;
     background: white;
     transition: all 0.2s ease;
     max-width: 150px;
     
-    @media (max-width: 480px) {
-      padding: 10px 14px;
-      font-size: 0.95rem;
-      border-radius: 8px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      padding: 11px 15px;
+      font-size: 0.975rem;
+      border-radius: 9px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      padding: 12px 16px;
+      font-size: 1rem;
+      border-radius: 10px;
     }
 
     &:focus {
@@ -538,10 +769,16 @@
   // Footer with submit button
   &__footer {
     text-align: center;
-    margin-top: 32px;
+    margin-top: 24px;
     
-    @media (max-width: 480px) {
-      margin-top: 24px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      margin-top: 28px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      margin-top: 32px;
     }
   }
 
@@ -549,22 +786,32 @@
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
-    padding: 16px 40px;
-    font-size: 1.1rem;
+    padding: 14px 32px;
+    font-size: 1rem;
     font-weight: 600;
-    border-radius: 50px;
+    border-radius: 40px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
-    min-width: 160px;
+    width: 100%;
+    max-width: 280px;
     
-    @media (max-width: 480px) {
-      padding: 14px 32px;
-      font-size: 1rem;
-      border-radius: 40px;
-      min-width: 140px;
-      width: 100%;
-      max-width: 300px;
+    // Tablet and up
+    @media (min-width: 768px) {
+      padding: 15px 36px;
+      font-size: 1.05rem;
+      border-radius: 45px;
+      max-width: 200px;
+      width: auto;
+      min-width: 160px;
+    }
+    
+    // Desktop and up
+    @media (min-width: 1024px) {
+      padding: 16px 40px;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      min-width: 180px;
     }
 
     &:hover {
@@ -579,23 +826,32 @@
   }
 }
 
-// Additional responsive improvements
-@media (max-width: 380px) {
+// Additional responsive improvements for very small screens
+@media (max-width: 350px) {
   .fit-form {
+    margin: 0 8px;
+    padding: 12px;
+    
     &__water-glasses {
       grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+    
+    &__vegetable-servings {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
     }
     
     &__title {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
     }
     
     &__section-title {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
     
     &__checkbox-label {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
     }
   }
 }
