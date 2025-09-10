@@ -193,24 +193,24 @@ function Form(): React.ReactNode {
         </div>
 
         <div className="fit-form__checkboxes">
-          <label className="fit-form__checkbox">
+          <label className={`fit-form__checkbox ${!formData.noSweets ? 'fit-form__checkbox--negative' : ''}`}>
             <input
               type="checkbox"
               checked={formData.noSweets}
               onChange={() => handleCheckboxChange('noSweets')}
             />
             <span className="fit-form__checkbox-checkmark"></span>
-            <span className="fit-form__checkbox-label">No sweets (no sugar drinks, no pastries) <span className="fit-form__points">+2</span></span>
+            <span className="fit-form__checkbox-label">No sweets (no sugar drinks, no pastries) <span className={`fit-form__points ${!formData.noSweets ? 'fit-form__points--negative' : ''}`}>{formData.noSweets ? '0' : '-2'}</span></span>
           </label>
           
-          <label className="fit-form__checkbox">
+          <label className={`fit-form__checkbox ${!formData.noAlcohol ? 'fit-form__checkbox--negative' : ''}`}>
             <input
               type="checkbox"
               checked={formData.noAlcohol}
               onChange={() => handleCheckboxChange('noAlcohol')}
             />
             <span className="fit-form__checkbox-checkmark"></span>
-            <span className="fit-form__checkbox-label">No alcohol <span className="fit-form__points">+2</span></span>
+            <span className="fit-form__checkbox-label">No alcohol <span className={`fit-form__points ${!formData.noAlcohol ? 'fit-form__points--negative' : ''}`}>{formData.noAlcohol ? '0' : '-2'}</span></span>
           </label>
         </div>
       </div>
