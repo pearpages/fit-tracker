@@ -49,8 +49,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100vw;
-  height: 100vh;
+  // Note: Using top/left/right/bottom is more reliable than width/height on mobile Safari
+  // width: 100vw and height: 100vh can cause issues with Safari's dynamic viewport
   
   // Background and layout
   background-color: rgba(0, 0, 0, 0.5);
@@ -234,8 +234,7 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  min-height: 100vh;
-  min-height: 100dvh; // Better mobile viewport handling
+  // Note: Using 100% instead of viewport units since parent (backdrop) handles viewport sizing
   outline: none;
   
   // Safari-specific fixes for margin issues
