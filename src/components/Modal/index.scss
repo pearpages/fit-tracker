@@ -1,0 +1,397 @@
+/*
+ * Modal Component Styles
+ * 
+ * Responsive Behavior:
+ * - Mobile (≤768px): Full-screen modals with slide-up animation
+ * - Desktop (>768px): Centered modals with different size variants
+ * 
+ * Features:
+ * - Safe area handling for devices with notches
+ * - Smooth animations and transitions
+ * - Accessibility-focused design
+ * - Proper z-index stacking for multiple modals
+ */
+
+// Modal backdrop - completely bulletproof positioning
+.modal-backdrop {
+  // Force positioning to override any parent styles
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  
+  // Background and layout
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  
+  // Force flexbox layout
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  
+  // Ensure it's above everything
+  z-index: 999999 !important;
+  
+  // Animation states - backdrop fade only
+  opacity: 0;
+  transition: opacity 250ms ease-out;
+  
+  &[data-state="open"] {
+    opacity: 1;
+  }
+  
+  &[data-state="closing"] {
+    opacity: 0;
+  }
+  
+  // Stacked modals should not have dark backdrop
+  &.modal-backdrop--stacked {
+    background-color: transparent !important;
+  }
+}
+
+// Modal dialog container - default centered behavior
+.modal-dialog {
+  // Reset all possible conflicting styles
+  position: relative !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  
+  // Layout
+  background: white !important;
+  border-radius: 8px !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+  
+  // Size constraints for desktop
+  width: auto !important;
+  min-width: 320px !important;
+  max-width: 600px !important;
+  max-height: 90vh !important;
+  
+  // Flexbox layout
+  display: flex !important;
+  flex-direction: column !important;
+  
+  // Animation states - transform only, no opacity conflicts
+  transform: scale(0.95) translateY(-10px);
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  
+  &[data-state="open"] {
+    transform: scale(1) translateY(0);
+  }
+  
+  &[data-state="closing"] {
+    transform: scale(0.95) translateY(-10px);
+  }
+}
+
+// Modal header
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0; // Prevent header from shrinking
+  
+  .modal-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+  }
+  
+  .modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    color: #6b7280;
+    line-height: 1;
+    min-width: 2rem;
+    min-height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &:hover {
+      background-color: #f3f4f6;
+      color: #374151;
+    }
+    
+    &:focus {
+      outline: 2px solid #3b82f6;
+      outline-offset: 2px;
+    }
+  }
+}
+
+// Modal content
+.modal-content {
+  padding: 1.5rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+// Modal without header
+.modal-dialog:not(:has(.modal-header)) .modal-content {
+  padding-top: 1.5rem;
+}
+
+// Confirm modal actions
+.modal-confirm-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+  
+  button {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    background: white;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 150ms ease;
+    
+    &:hover {
+      background-color: #f9fafb;
+    }
+    
+    &:focus {
+      outline: 2px solid #3b82f6;
+      outline-offset: 2px;
+    }
+    
+    &[data-variant="danger"] {
+      background-color: #dc2626;
+      border-color: #dc2626;
+      color: white;
+      
+      &:hover {
+        background-color: #b91c1c;
+      }
+    }
+    
+    &:last-child {
+      background-color: #3b82f6;
+      border-color: #3b82f6;
+      color: white;
+      
+      &:hover {
+        background-color: #2563eb;
+      }
+    }
+  }
+}
+
+// Focus trap container
+div[style*="outline: none"] {
+  outline: none !important;
+}
+
+// Mobile responsive design - full screen
+@media (max-width: 768px) {
+  .modal-backdrop {
+    padding: 0 !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+  }
+  
+  .modal-dialog {
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important; // Use dynamic viewport height if supported
+    max-width: none !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    
+    // Safe area handling for devices with notches
+    padding-top: env(safe-area-inset-top, 0) !important;
+    padding-bottom: env(safe-area-inset-bottom, 0) !important;
+    
+    // Full screen slide-up animation for mobile - transform only
+    transform: translateY(100%);
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    
+    &[data-state="open"] {
+      transform: translateY(0);
+    }
+    
+    &[data-state="closing"] {
+      transform: translateY(100%);
+    }
+    
+    // Override all size variants on mobile
+    &[data-size="sm"],
+    &[data-size="md"], 
+    &[data-size="lg"],
+    &[data-size="xl"],
+    &.modal-sm,
+    &.modal-md,
+    &.modal-lg,
+    &.modal-xl {
+      width: 100vw !important;
+      max-width: none !important;
+    }
+  }
+  
+  .modal-header {
+    padding: 1rem;
+    padding-top: calc(1rem + env(safe-area-inset-top, 0));
+    border-bottom: 1px solid #e5e7eb;
+    flex-shrink: 0;
+  }
+  
+  .modal-content {
+    padding: 1rem;
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0));
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+  }
+}
+
+// Desktop styles - ensure proper centering
+@media (min-width: 769px) {
+  .modal-backdrop {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 2rem !important;
+  }
+  
+  .modal-dialog {
+    margin: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: 90vh !important;
+    border-radius: 8px !important;
+    
+    // Size variants with proper max-widths for desktop
+    &[data-size="sm"], &.modal-sm {
+      width: 100% !important;
+      max-width: 400px !important;
+    }
+    
+    &[data-size="md"], &.modal-md {
+      width: 100% !important;
+      max-width: 600px !important;
+    }
+    
+    &[data-size="lg"], &.modal-lg {
+      width: 100% !important;
+      max-width: 800px !important;
+    }
+    
+        &[data-size="xl"], &.modal-xl {
+      width: 100% !important;
+      max-width: 1200px !important;
+    }
+  }
+}
+
+// Modal action utilities for common button layouts
+.modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  flex-shrink: 0;
+  
+  // Right-aligned actions (common pattern)
+  &.modal-actions-right {
+    justify-content: flex-end;
+  }
+  
+  // Center-aligned actions
+  &.modal-actions-center {
+    justify-content: center;
+  }
+  
+  // Space between actions (first left, rest right)
+  &.modal-actions-between {
+    justify-content: space-between;
+  }
+  
+  // Full-width single action
+  &.modal-actions-full {
+    button {
+      flex: 1;
+    }
+  }
+}
+
+// Button styles for modal actions
+.modal-actions {
+  button {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    background-color: white;
+    color: #374151;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 150ms ease-in-out;
+    
+    &:hover {
+      background-color: #f3f4f6;
+      border-color: #9ca3af;
+    }
+    
+    &:focus {
+      outline: 2px solid #3b82f6;
+      outline-offset: 2px;
+    }
+    
+    // Primary button variant
+    &.btn-primary {
+      background-color: #3b82f6;
+      border-color: #3b82f6;
+      color: white;
+      
+      &:hover {
+        background-color: #2563eb;
+        border-color: #2563eb;
+      }
+    }
+    
+    // Danger button variant
+    &.btn-danger {
+      background-color: #ef4444;
+      border-color: #ef4444;
+      color: white;
+      
+      &:hover {
+        background-color: #dc2626;
+        border-color: #dc2626;
+      }
+    }
+  }
+}
+
+// Responsive modal actions
+@media (max-width: 768px) {
+  .modal-actions {
+    padding: 1rem;
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0));
+    
+    // Stack buttons on mobile for better touch targets
+    &.modal-actions-mobile-stack {
+      flex-direction: column;
+      
+      button {
+        width: 100%;
+        min-height: 44px; // Minimum touch target size
+      }
+    }
+  }
+}

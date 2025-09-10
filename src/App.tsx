@@ -1,5 +1,6 @@
 import { ContributionHeatmapExample } from '@/components/ContributionHeatmap/Example';
 import './App.scss';
+import { ModalExample } from './components/Modal/Example';
 import { FormExample } from '@/components/Form/Example';
 
 const Header = () => (
@@ -15,6 +16,7 @@ function App() {
     <div className="app">
       <Header />
       <main className="app__main">
+        <ModalExample />
         <FormExample />
         <ContributionHeatmapExample />
       </main>
