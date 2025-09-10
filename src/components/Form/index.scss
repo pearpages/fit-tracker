@@ -1,0 +1,679 @@
+// Form component styles - Mobile first approach
+.fit-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  
+  @media (max-width: 480px) {
+    padding: 20px;
+    border-radius: 16px;
+    margin: 0 10px;
+  }
+
+  // Header with score
+  &__header {
+    text-align: center;
+    margin-bottom: 32px;
+    
+    @media (max-width: 480px) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin: 0 0 16px 0;
+    
+    @media (max-width: 480px) {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__score {
+    display: inline-flex;
+    align-items: baseline;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    
+    @media (max-width: 480px) {
+      padding: 6px 12px;
+      border-radius: 16px;
+    }
+  }
+
+  &__score-number {
+    font-size: 1.5rem;
+    margin-right: 2px;
+    
+    @media (max-width: 480px) {
+      font-size: 1.3rem;
+    }
+  }
+
+  &__score-total {
+    font-size: 1rem;
+    opacity: 0.8;
+    
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+    }
+  }
+
+  &__score-note {
+    font-size: 0.75rem;
+    color: #718096;
+    margin: 8px 0 0 0;
+    font-style: italic;
+    
+    @media (max-width: 480px) {
+      font-size: 0.7rem;
+      margin-top: 6px;
+    }
+  }
+
+  // Section styling
+  &__section {
+    margin-bottom: 28px;
+    
+    @media (max-width: 480px) {
+      margin-bottom: 24px;
+    }
+
+    &:last-of-type {
+      margin-bottom: 32px;
+      
+      @media (max-width: 480px) {
+        margin-bottom: 24px;
+      }
+    }
+  }
+
+  &__section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    
+    @media (max-width: 480px) {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    @media (max-width: 480px) {
+      font-size: 1rem;
+      gap: 6px;
+    }
+  }
+
+  &__section-subtitle {
+    font-size: 0.85rem;
+    color: #667eea;
+    font-weight: 500;
+    
+    @media (max-width: 480px) {
+      font-size: 0.8rem;
+    }
+  }
+
+  // Subsection styling for grouping within sections
+  &__subsection {
+    margin-bottom: 20px;
+    
+    @media (max-width: 480px) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__subsection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    
+    @media (max-width: 480px) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__subsection-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #4a5568;
+    margin: 0;
+    
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+    }
+  }
+
+  // Water glasses grid
+  &__water-glasses {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    
+    @media (max-width: 480px) {
+      gap: 8px;
+    }
+  }
+
+  &__water-glass {
+    background: #f7fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    @media (max-width: 480px) {
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 1.3rem;
+    }
+
+    &:hover {
+      border-color: #667eea;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    &--filled {
+      background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+      border-color: #4299e1;
+      color: white;
+      box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3);
+
+      &:hover {
+        background: linear-gradient(135deg, #3182ce 0%, #5a67d8 100%);
+        border-color: #3182ce;
+      }
+    }
+  }
+
+  &__water-glass-icon {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  }
+
+  // Vegetable servings grid (similar to water glasses)
+  &__vegetable-servings {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    
+    @media (max-width: 480px) {
+      gap: 8px;
+    }
+
+    @media (max-width: 380px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__vegetable-serving {
+    background: #f7fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    @media (max-width: 480px) {
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 1.2rem;
+    }
+
+    &:hover {
+      border-color: #48bb78;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(72, 187, 120, 0.15);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    &--filled {
+      background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+      border-color: #48bb78;
+      color: white;
+      box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+
+      &:hover {
+        background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+        border-color: #38a169;
+      }
+    }
+  }
+
+  &__vegetable-serving-icon {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  }
+
+  // Checkboxes
+  &__checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    
+    @media (max-width: 480px) {
+      gap: 10px;
+    }
+  }
+
+  &__checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    
+    @media (max-width: 480px) {
+      gap: 10px;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    &:hover {
+      background: rgba(102, 126, 234, 0.05);
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+  }
+
+  &__checkbox-checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #cbd5e0;
+    border-radius: 6px;
+    background: white;
+    flex-shrink: 0;
+    position: relative;
+    transition: all 0.2s ease;
+    
+    @media (max-width: 480px) {
+      width: 18px;
+      height: 18px;
+      border-radius: 5px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 6px;
+      width: 6px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg) scale(0);
+      transition: transform 0.2s ease;
+      
+      @media (max-width: 480px) {
+        top: 1px;
+        left: 5px;
+        width: 5px;
+        height: 9px;
+      }
+    }
+  }
+
+  &__checkbox input[type="checkbox"]:checked + &__checkbox-checkmark {
+    background: #667eea;
+    border-color: #667eea;
+
+    &::after {
+      transform: rotate(45deg) scale(1);
+    }
+  }
+
+  &__checkbox-label {
+    color: #2d3748;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-top: 1px;
+    
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+    }
+  }
+
+  // Point indicators
+  &__points {
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 8px;
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    
+    @media (max-width: 480px) {
+      font-size: 0.8rem;
+      padding: 1px 4px;
+      margin-left: 6px;
+    }
+  }
+
+  // Counter for vegetables/fruit
+  &__counter {
+    margin-top: 16px;
+    
+    @media (max-width: 480px) {
+      margin-top: 12px;
+    }
+  }
+
+  &__counter-label {
+    display: block;
+    color: #2d3748;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+  }
+
+  &__counter-status {
+    display: inline-block;
+    font-size: 0.8rem;
+    padding: 2px 6px;
+    border-radius: 8px;
+    margin-left: 8px;
+    font-weight: 600;
+    
+    &--achieved {
+      background: rgba(102, 126, 234, 0.1);
+      color: #667eea;
+    }
+    
+    &--pending {
+      background: rgba(160, 174, 192, 0.1);
+      color: #718096;
+    }
+  }
+
+  &__counter-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    
+    @media (max-width: 480px) {
+      gap: 12px;
+    }
+  }
+
+  &__counter-btn {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #e2e8f0;
+    background: white;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #4a5568;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    @media (max-width: 480px) {
+      width: 36px;
+      height: 36px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+    }
+
+    &:hover {
+      border-color: #667eea;
+      color: #667eea;
+      background: rgba(102, 126, 234, 0.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__counter-value {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2d3748;
+    min-width: 24px;
+    text-align: center;
+    
+    @media (max-width: 480px) {
+      font-size: 1.2rem;
+    }
+  }
+
+  // Weight input styling
+  &__weight-input {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+    @media (max-width: 480px) {
+      gap: 6px;
+    }
+  }
+
+  &__weight-label {
+    color: #2d3748;
+    font-size: 0.95rem;
+    font-weight: 500;
+    
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+    }
+  }
+
+  &__weight-field {
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #2d3748;
+    background: white;
+    transition: all 0.2s ease;
+    max-width: 150px;
+    
+    @media (max-width: 480px) {
+      padding: 10px 14px;
+      font-size: 0.95rem;
+      border-radius: 8px;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    &::placeholder {
+      color: #a0aec0;
+    }
+  }
+
+  // Footer with submit button
+  &__footer {
+    text-align: center;
+    margin-top: 32px;
+    
+    @media (max-width: 480px) {
+      margin-top: 24px;
+    }
+  }
+
+  &__submit {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+    min-width: 160px;
+    
+    @media (max-width: 480px) {
+      padding: 14px 32px;
+      font-size: 1rem;
+      border-radius: 40px;
+      min-width: 140px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+      background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// Additional responsive improvements
+@media (max-width: 380px) {
+  .fit-form {
+    &__water-glasses {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    &__title {
+      font-size: 1.3rem;
+    }
+    
+    &__section-title {
+      font-size: 0.95rem;
+    }
+    
+    &__checkbox-label {
+      font-size: 0.85rem;
+    }
+  }
+}
+
+// Dark mode support (optional)
+@media (prefers-color-scheme: dark) {
+  .fit-form {
+    background: rgba(26, 32, 44, 0.95);
+    
+    &__title,
+    &__section-title,
+    &__subsection-title,
+    &__checkbox-label,
+    &__counter-label,
+    &__counter-value,
+    &__weight-label {
+      color: #e2e8f0;
+    }
+
+    &__score-note {
+      color: #a0aec0;
+    }
+    
+    &__checkbox-checkmark {
+      background: #2d3748;
+      border-color: #4a5568;
+    }
+    
+    &__water-glass {
+      background: #2d3748;
+      border-color: #4a5568;
+    }
+
+    &__vegetable-serving {
+      background: #2d3748;
+      border-color: #4a5568;
+    }
+    
+    &__counter-btn {
+      background: #2d3748;
+      border-color: #4a5568;
+      color: #e2e8f0;
+      
+      &:hover {
+        background: rgba(102, 126, 234, 0.1);
+      }
+    }
+
+    &__weight-field {
+      background: #2d3748;
+      border-color: #4a5568;
+      color: #e2e8f0;
+
+      &::placeholder {
+        color: #718096;
+      }
+
+      &:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+      }
+    }
+
+    &__points {
+      background: rgba(102, 126, 234, 0.2);
+      color: #a8c5ff;
+    }
+
+    &__counter-status {
+      &--achieved {
+        background: rgba(102, 126, 234, 0.2);
+        color: #a8c5ff;
+      }
+      
+      &--pending {
+        background: rgba(160, 174, 192, 0.2);
+        color: #cbd5e0;
+      }
+    }
+  }
+}

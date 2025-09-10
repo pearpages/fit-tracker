@@ -1,5 +1,6 @@
-import { Example } from '@/components/ContributionHeatmap/Example';
+import { ContributionHeatmapExample } from '@/components/ContributionHeatmap/Example';
 import './App.scss';
+import { FormExample } from '@/components/Form/Example';
 
 const Header = () => (
   <header className="app__header">
@@ -14,7 +15,8 @@ function App() {
     <div className="app">
       <Header />
       <main className="app__main">
-        <Example />
+        <FormExample />
+        <ContributionHeatmapExample />
       </main>
     </div>
   );

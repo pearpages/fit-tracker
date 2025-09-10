@@ -9,7 +9,7 @@ import { groupByWeeks } from '../groupByWeeks';
 const sampleData = generateMockData({ period: 'lastYear', isRealistic: true });
 const period = getLastYearPeriod();
 
-function Example() {
+function ContributionHeatmapExample() {
   const [theme, setTheme] = useState<Theme>('');
   const [hasRealisticData, setHasRealisticData] = useState(false);
 
@@ -42,4 +42,4 @@ function Example() {
   );
 }
 
-export { Example };
+export { ContributionHeatmapExample };
