@@ -73,17 +73,7 @@ const FocusTrap: React.FC<FocusTrapProps> = ({
   }, [enabled, initialFocus]);
 
   return (
-    <div
-      className="modal-focus-trap"
-      ref={containerRef}
-      style={{
-        outline: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-      }}
-    >
+    <div className="modal-focus-trap" ref={containerRef}>
       {children}
     </div>
   );
