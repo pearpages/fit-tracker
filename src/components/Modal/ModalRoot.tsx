@@ -74,6 +74,7 @@ const FocusTrap: React.FC<FocusTrapProps> = ({
 
   return (
     <div
+      className="modal-focus-trap"
       ref={containerRef}
       style={{
         outline: 'none',
@@ -81,7 +82,6 @@ const FocusTrap: React.FC<FocusTrapProps> = ({
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        height: '100%',
       }}
     >
       {children}
